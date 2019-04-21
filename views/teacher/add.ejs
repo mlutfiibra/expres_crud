@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head', {title: 'Add Teacher'}) %>
+
+<%- include('../partials/navbar') %>
+
+<body>
+    <div>
+        <%= locals.err && err%>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Add Teacher Data</h1>
+            </div>
+            <div class="col-md-12"><a href="/teachers">Teacher data</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="/teachers/add">
+                    <input type="text" placeholder="First name" name="firstName">
+                    <input type="text" placeholder="Last Name" name="lastName">
+                    <input type="email" placeholder="Email" name="email">
+
+                    <select name="subjectId">
+                        <option key="" value="" disabled selected>Choose subject</option>
+                        <% subjects.forEach(el => { %>
+                        <option key="<%=el.id%>" value="<%=el.id%>"><%=el.subjectName%></option>
+                        <% }) %>
+                    </select>
+
+                    <button class="btn btn-primary">Add teacher</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+
+</body>
+
+</html>

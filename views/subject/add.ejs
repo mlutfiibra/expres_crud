@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head', {title: 'Add Subject'}) %>
+<%- include('../partials/navbar') %>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Add Subject Data</h1>
+            </div>
+            <div class="col-md-12"><a href="/subjects">Subject data</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="/subjects/add">
+                    <input type="text" placeholder="Subject name" name="subjectName">
+
+                    <button class="btn btn-primary">Add subject</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

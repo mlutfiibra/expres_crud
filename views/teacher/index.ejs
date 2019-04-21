@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head', {title: 'Teachers Data'}) %>
+
+<%- include('../partials/navbar') %>
+<body>
+    <div class="container">
+        <div class="row" style="margin:20px 0px 30px;">
+            <div class="col-md-12 text-center">
+                <h1>Teacher Data</h1>
+                <a href="teachers/add">add teacher</a>
+            </div>
+        </div>
+        <div class="row">
+            <div>Showing <%=result[1].teacherCount %> Teachers</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(result[0].teachers!==null && result[0].teachers!== undefined) {
+                        result[0].teachers.forEach(function(el) { 
+                    %>
+                    <tr>
+                        <td><%= el.id %></td>
+                        <td><%= el.firstName %></td>
+                        <td><%= el.lastName %></td>
+                        <td><%= el.email %></td>
+                        <td><%= el.Subject ?  el.Subject.subjectName : "unassigned"%></td>
+                        <td>
+                            <span><a href="/teachers/edit/<%=el.id%>">edit</a></span>
+                            <span><a href="/teachers/delete/<%=el.id%>" onclick="return confirm('Are you sure?')">delete</a></span>
+                        </td>
+                    </tr>
+                    <% 
+                        });
+                        } 
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

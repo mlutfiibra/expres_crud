@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head', {title: 'Edit Teacher'}) %>
+
+<%- include('../partials/navbar') %>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Edit Teachers Data</h1>
+            </div>
+            <div class="col-md-12"><a href="/teachers">Show teachers</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="/teachers/edit/<%=teachers.id%>">
+                    <input type="text" placeholder="First name" name="firstName" value="<%=teachers.firstName%>">
+                    <input type="text" placeholder="Last Name" name="lastName" value="<%=teachers.lastName%>">
+                    <input type="email" placeholder="Email" name="email" value="<%=teachers.email%>">
+
+                    <select name="subjectId">
+                        <option key ="" value="" disabled selected>Choose subject</option>
+                        <% subjects.forEach(el => { 
+                            if(el.id === teachers.subjectId) {%>
+                                <option key ="<%=el.id%>" value="<%=el.id%>" selected><%=el.subjectName%> </option>
+                            <% }else{ %>
+                                <option key ="<%=el.id%>" value="<%=el.id%>"><%=el.subjectName%> </option>
+                            <% } %>
+                        <% }) %>
+                    </select>
+
+                    <button class="btn btn-primary">Edit teachers</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+
+</body>
+
+</html>

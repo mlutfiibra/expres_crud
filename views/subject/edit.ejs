@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head', {title: 'Edit Subject'}) %>
+<%- include('../partials/navbar') %>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Edit Subject Data</h1>
+            </div>
+            <div class="col-md-12"><a href="/subjects">Show subject data</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="/subjects/edit/<%=subjects.id%>">
+                    <input type="text" placeholder="First name" name="subjectName" value="<%=subjects.subjectName%>">
+
+                    <button class="btn btn-primary">Edit student</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head', {title: 'Subjects Data'}) %>
+<%- include('../partials/navbar') %>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Subjects Data</h1>
+            </div>
+            <div><a href="subjects/add">Add subject</a></div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Subject Name</th>
+                        <th>Teachers</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <%= JSON.stringify(subjects, null, 2)%> -->
+                    <% if(subjects!==null && subjects!== undefined) {
+                        subjects.forEach(function(el) { 
+                    %>
+                    <tr>
+                        <td><%= el.id %></td>
+                        <td><%= el.subjectName %></td>
+                        <td>
+                            <ol>
+                                <%el.Teachers.forEach(el => { %>
+                                <li><%=el.getFullName()%></li>
+                                <% }) %>
+                            </ol>
+                        </td>
+                        <td><a href="/subjects/<%= el.id %>/enrolled-students">Enrolled Students</a></td>
+                    </tr>
+                    <% 
+                        });
+                        } 
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+</html>
